@@ -18,8 +18,8 @@ st.title("Flange Flatness Predictor")
 st.write("Voer waarden in voor de maximale en minimale Angular Displacement om een voorspelling te krijgen van de Flange Flatness.")
 
 # Inputvelden
-max_displacement = st.number_input("Max Angular Displacement [mm]", value=-5.5, step=0.1)
-min_displacement = st.number_input("Min Angular Displacement [mm]", value=-6.5, step=0.1)
+max_displacement = st.number_input("Max TOC Angular Displacement [mm]", value=-5.5, step=0.1)
+min_displacement = st.number_input("Min TOC Angular Displacement [mm]", value=-6.5, step=0.1)
 
 # Voorspelling berekenen
 if st.button("Voorspel Flange Flatness"):
@@ -34,9 +34,9 @@ if st.button("Voorspel Flange Flatness"):
     
     # Grafische visualisatie
     fig, ax = plt.subplots()
-    ax.scatter([max_displacement], [min_displacement], color='red', label='Ingevoerde waarden')
-    ax.set_xlabel("Max Angular Displacement [mm]")
-    ax.set_ylabel("Min Angular Displacement [mm]")
-    ax.set_title("Visualisatie van Angular Displacement vs. Flange Flatness")
+    ax.scatter([max_displacement], [predicted_flatness], color='red', label='Voorspelde Flange Flatness')
+    ax.set_xlabel("Max TOC Angular Displacement [mm]")
+    ax.set_ylabel("Voorspelde Flange Flatness [mm]")
+    ax.set_title("Relatie tussen TOC Angular Displacement en Voorspelde Flange Flatness")
     ax.legend()
     st.pyplot(fig)
